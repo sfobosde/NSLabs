@@ -13,6 +13,11 @@ namespace HarvestMainFrame.Interfaces
 	{
 		// Событие закрытия формы.
 		event MainFormClosing MainFormClose;
+
+		// Получим данные о размерах окна.
 		(int windowHeight, int windowWight) GetWindowSize();
+
+		// Перерисовка окна.
+		void RedrawForm(List<(int xAxesCoordinate, int yAxesCoordinate, int radius)> modelParams);
 	}
 }

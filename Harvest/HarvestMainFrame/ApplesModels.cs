@@ -19,6 +19,9 @@ namespace HarvestMainFrame
 		delegate void StopingAllModels();
 		event StopingAllModels StopFalling;
 
+		// Событие на запрос перерисовки окна.
+		public event RedrawingModels RedrawModels;
+
 		public ApplesModels()
 		{
 			falledApplesCount = 0;
@@ -26,14 +29,20 @@ namespace HarvestMainFrame
 
 		public void AddNewApple(AppleModel appleModel)
 		{
-			// Включаем яблоко в список.
-			appleModels.Add(appleModel);
-
 			// Подписываемся на событие остановки приложения.
 			StopFalling += appleModel.StopFalling;
 
 			// Подписываемся на события падения яблока на землю.
 			appleModel.AppleFalled += OnAppleFalled;
+
+			// Подписываемся на событие изменения координат.
+			appleModel.ChangingCoordinates += CoordinatesChanged;
+
+			// Включаем яблоко в список.
+			appleModels.Add(appleModel);
+
+			// Начинаем падение яблок.
+			appleModel.StartFalling();
 		}
 
 		// Обработчик события падения какого то из яблок на землю.
@@ -49,15 +58,36 @@ namespace HarvestMainFrame
 				// Упало 10 яблок.
 				falledApplesCount = 0;
 
-				// Вызыываем "сборку" урожая"
+				// Вызыываем "сборку" урожая".
 			}
 		}
 
-		// Остановка падения яблок (при закрытии приложения)
+		// Остановка падения яблок (при закрытии приложения).
 		public void StopFallingToAll()
 		{
-			// Отправляем всем яблокам оповещения об остановке
+			// Отправляем всем яблокам оповещения об остановке.
 			StopFalling();
+		}
+
+		// Обработчик события изменения координат.
+		public void CoordinatesChanged()
+		{
+			RedrawModels();
+		}
+
+		// Получение данных о моделях.
+		public List<(int xAxesCoordinate, int yAxesCoordinate, int radius)> GetModelsParams()
+		{
+			// Внутренний список, в него будем вносить все.
+			List<(int xAxesCoordinate, int yAxesCoordinate, int radius)> modelParams = 
+				new List<(int xAxesCoordinate, int yAxesCoordinate, int radius)>();
+
+			foreach (var appleModel in appleModels)
+			{
+				modelParams.Add(appleModel.GetParamsData());
+			}
+
+			return modelParams;
 		}
 	}
 }

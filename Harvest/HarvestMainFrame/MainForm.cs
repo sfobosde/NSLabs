@@ -16,9 +16,13 @@ namespace HarvestMainFrame
 		// Событие из интерфейса на закрытие формы.
 		public event MainFormClosing MainFormClose;
 
+		Graphics drawingController;
+
 		public MainForm()
 		{
 			InitializeComponent();
+
+			drawingController = CreateGraphics();
 		}
 
 		// Обработчик события закрытия формы.
@@ -32,6 +36,25 @@ namespace HarvestMainFrame
 		public (int windowHeight, int windowWight) GetWindowSize()
 		{
 			return (this.Size.Height, this.Size.Width);
+		}
+
+		// Обработчик события перерисовки окна.
+		public void RedrawForm(List<(int xAxesCoordinate, int yAxesCoordinate, int radius)> modelParams)
+		{
+			// Отчистим форму.
+			Invalidate();
+
+			// Перебирая рисуем по шару.
+			foreach (var (xAxesCoordinate, yAxesCoordinate, radius) in modelParams)
+			{
+				// Рисуем эллипс.
+				lock(drawingController)
+				{
+					drawingController.DrawEllipse(
+					new System.Drawing.Pen(System.Drawing.Color.Red),
+					new Rectangle(xAxesCoordinate, yAxesCoordinate, radius, radius));
+				}
+			}
 		}
 	}
 }
