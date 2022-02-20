@@ -27,6 +27,11 @@ namespace HarvestMainFrame
 		int windowHeight;
 		int windowWight;
 
+		// Делегат и событие на перерисовку окна.
+		delegate void RedrawingForm(
+			List<(int xAxesCoordinate, int yAxesCoordinate, int radius)> modelParams);
+		event RedrawingForm RedrawForm;
+
 		public Presentor(IMainForm mainForm, IApplesModels applesModels)
 		{
 			// Соединяем ссылки на объекты.
@@ -48,6 +53,12 @@ namespace HarvestMainFrame
 			// Начинаем создание яблок через поток.
 			appleGeneratingThread = new Thread(new ThreadStart(StartGenerateAppleModels));
 			appleGeneratingThread.Start();
+
+			// Подписка на событие изменения координат моделей.
+			_applesModels.RedrawModels += RedrawModels;
+
+			// Подписка на событие перерисовки формы.
+			this.RedrawForm += _mainForm.RedrawForm;
 		}
 
 		// Остановить потоки при закрытии формы.
@@ -74,6 +85,17 @@ namespace HarvestMainFrame
 
 				Thread.Sleep(appleGenratingPauseTime);
 			}
+		}
+
+		// Обработчик события изменения координат моделей.
+		public void RedrawModels()
+		{
+			// Получаем данные о моделях.
+			List<(int xAxesCoordinate, int yAxesCoordinate, int radius)> modelParams =
+				_applesModels.GetModelsParams();
+
+			// Отправить запрос на перерисовку формы.
+			RedrawForm(modelParams);
 		}
 	}
 }
