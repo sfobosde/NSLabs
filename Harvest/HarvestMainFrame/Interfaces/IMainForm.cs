@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace HarvestMainFrame.Interfaces
 {
+	// Делегат для события закрытия формы.
+	public delegate void MainFormClosing();
+
 	interface IMainForm
 	{
+		// Событие закрытия формы.
+		event MainFormClosing MainFormClose;
 	}
 }

@@ -14,9 +14,15 @@ namespace HarvestMainFrame
 		[STAThread]
 		static void Main()
 		{
-			Application.EnableVisualStyles();
-			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new MainForm());
+			// Создали объект формы, чтобы передать его в презентор.
+			// Форма наследована от интерфейса формы.
+			MainForm mainForm = new MainForm();
+
+			// Создали презентор, который будет управлять моделями и формой.
+			Presentor presentor = new Presentor(mainForm);
+
+			// Делаем запуск формы.
+			Application.Run(mainForm);
 		}
 	}
 }
