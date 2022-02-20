@@ -20,5 +20,12 @@ namespace HarvestMainFrame
 		{
 			InitializeComponent();
 		}
+
+		// Обработчик события закрытия формы.
+		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			// Уведомляем через событие презентор о закрытии формы.
+			MainFormClose();
+		}
 	}
 }
