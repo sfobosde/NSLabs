@@ -12,6 +12,11 @@ namespace HarvestMainFrame
 		// Список (массив) из объектов - яблок.
 		List<AppleModel> appleModels = new List<AppleModel>();
 
+		public ApplesModels()
+		{
+
+		}
+
 		public void AddNewApple(AppleModel appleModel)
 		{
 			// Включаем яблоко в список.
