@@ -18,8 +18,12 @@ namespace HarvestMainFrame
 			// Форма наследована от интерфейса формы.
 			MainForm mainForm = new MainForm();
 
+			// Создаем объект моделей и передаем в презентор.
+			// Объект основной модели наследовани от интерфейса.
+			ApplesModels appleModels = new ApplesModels();
+
 			// Создали презентор, который будет управлять моделями и формой.
-			Presentor presentor = new Presentor(mainForm);
+			Presentor presentor = new Presentor(mainForm, appleModels);
 
 			// Делаем запуск формы.
 			Application.Run(mainForm);

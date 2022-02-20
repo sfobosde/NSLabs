@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppleModel.cs" />
+    <Compile Include="ApplesModels.cs" />
+    <Compile Include="Interfaces\IApplesModels.cs" />
     <Compile Include="Interfaces\IMainForm.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
