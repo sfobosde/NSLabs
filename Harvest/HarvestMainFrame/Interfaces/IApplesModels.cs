@@ -10,5 +10,7 @@ namespace HarvestMainFrame.Interfaces
 	{
 		// Добавление нового яблока
 		void AddNewApple(AppleModel appleModel);
+
+		void StopFallingToAll();
 	}
 }

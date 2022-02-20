@@ -50,12 +50,14 @@ namespace HarvestMainFrame
 			appleGeneratingThread.Start();
 		}
 
+		// Остановить потоки при закрытии формы.
 		public void MainFormClose()
 		{
-			// Остановить потоки при закрытии формы.
-
 			// Останавливаем поток генерации моделей.
 			isAbleToGenerateModels = false;
+
+			// Останавливаем модели.
+			_applesModels.StopFallingToAll();
 		}
 
 		public void StartGenerateAppleModels()

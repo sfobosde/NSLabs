@@ -11,7 +11,14 @@ namespace HarvestMainFrame
 	{
 		// Список (массив) из объектов - яблок.
 		List<AppleModel> appleModels = new List<AppleModel>();
+
+		// Счет упавших яблок.
 		int falledApplesCount;
+
+		// Событие и делегат для оповещения моделей о остановке.
+		delegate void StopingAllModels();
+		event StopingAllModels StopFalling;
+
 		public ApplesModels()
 		{
 			falledApplesCount = 0;
@@ -21,6 +28,9 @@ namespace HarvestMainFrame
 		{
 			// Включаем яблоко в список.
 			appleModels.Add(appleModel);
+
+			// Подписываемся на событие остановки приложения.
+			StopFalling += appleModel.StopFalling;
 
 			// Подписываемся на события падения яблока на землю.
 			appleModel.AppleFalled += OnAppleFalled;
@@ -41,6 +51,13 @@ namespace HarvestMainFrame
 
 				// Вызыываем "сборку" урожая"
 			}
+		}
+
+		// Остановка падения яблок (при закрытии приложения)
+		public void StopFallingToAll()
+		{
+			// Отправляем всем яблокам оповещения об остановке
+			StopFalling();
 		}
 	}
 }
