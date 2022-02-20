@@ -1,0 +1,10 @@
+C:\Users\Мвидео\Desktop\NSLabs\NSLabs\Harvest\HarvestMainFrame\bin\Debug\HarvestMainFrame.exe.config
+C:\Users\Мвидео\Desktop\NSLabs\NSLabs\Harvest\HarvestMainFrame\bin\Debug\HarvestMainFrame.exe
+C:\Users\Мвидео\Desktop\NSLabs\NSLabs\Harvest\HarvestMainFrame\bin\Debug\HarvestMainFrame.pdb
+C:\Users\Мвидео\Desktop\NSLabs\NSLabs\Harvest\HarvestMainFrame\obj\Debug\HarvestMainFrame.csprojAssemblyReference.cache
+C:\Users\Мвидео\Desktop\NSLabs\NSLabs\Harvest\HarvestMainFrame\obj\Debug\HarvestMainFrame.MainForm.resources
+C:\Users\Мвидео\Desktop\NSLabs\NSLabs\Harvest\HarvestMainFrame\obj\Debug\HarvestMainFrame.Properties.Resources.resources
+C:\Users\Мвидео\Desktop\NSLabs\NSLabs\Harvest\HarvestMainFrame\obj\Debug\HarvestMainFrame.csproj.GenerateResource.cache
+C:\Users\Мвидео\Desktop\NSLabs\NSLabs\Harvest\HarvestMainFrame\obj\Debug\HarvestMainFrame.csproj.CoreCompileInputs.cache
+C:\Users\Мвидео\Desktop\NSLabs\NSLabs\Harvest\HarvestMainFrame\obj\Debug\HarvestMainFrame.exe
+C:\Users\Мвидео\Desktop\NSLabs\NSLabs\Harvest\HarvestMainFrame\obj\Debug\HarvestMainFrame.pdb
