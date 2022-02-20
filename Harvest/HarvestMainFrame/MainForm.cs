@@ -27,5 +27,11 @@ namespace HarvestMainFrame
 			// Уведомляем через событие презентор о закрытии формы.
 			MainFormClose();
 		}
+
+		// Получить размеры окна.
+		public (int windowHeight, int windowWight) GetWindowSize()
+		{
+			return (this.Size.Height, this.Size.Width);
+		}
 	}
 }
