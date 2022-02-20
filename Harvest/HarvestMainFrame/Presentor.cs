@@ -45,7 +45,7 @@ namespace HarvestMainFrame
 			(windowHeight, windowWight) = _mainForm.GetWindowSize();
 
 			// Задержка между созданиями двух яблок - 2 секунды.
-			appleGenratingPauseTime = 2000;
+			appleGenratingPauseTime = 500;
 
 			// Разрешаем генерацию моделей.
 			isAbleToGenerateModels = true;

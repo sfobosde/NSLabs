@@ -44,15 +44,15 @@ namespace HarvestMainFrame
 			// Отчистим форму.
 			Invalidate();
 
-			lock(modelParams)
+			// Перебирая рисуем по шару.
+			foreach (var (xAxesCoordinate, yAxesCoordinate, radius) in modelParams)
 			{
-				// Перебирая рисуем по шару.
-				foreach (var (xAxesCoordinate, yAxesCoordinate, radius) in modelParams)
+				// Рисуем эллипс.
+				lock(drawingController)
 				{
-					// Рисуем эллипс.
 					drawingController.DrawEllipse(
-						new System.Drawing.Pen(System.Drawing.Color.Red),
-						new Rectangle(xAxesCoordinate, yAxesCoordinate, radius, radius));
+					new System.Drawing.Pen(System.Drawing.Color.Red),
+					new Rectangle(xAxesCoordinate, yAxesCoordinate, radius, radius));
 				}
 			}
 		}

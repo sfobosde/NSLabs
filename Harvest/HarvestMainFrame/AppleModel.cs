@@ -56,11 +56,9 @@ namespace HarvestMainFrame
 					// Продолжаем падать.
 					_yAxesCoordinate += _fallingSpeed;
 
-					// Извещаем основную модель о изменении координат.
+					// Ждем 0,1 секунды и запрашиваем перерисовку.
+					Thread.Sleep(10);
 					ChangingCoordinates();
-
-					// Ждем 0,5 секунды.
-					Thread.Sleep(500);
 				}
 				else
 				{
