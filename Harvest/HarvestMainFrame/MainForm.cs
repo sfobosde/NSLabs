@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using HarvestMainFrame.Interfaces;
 
 namespace HarvestMainFrame
 {
-	public partial class MainForm : Form
+	public partial class MainForm : Form, IMainForm
 	{
 		public MainForm()
 		{
