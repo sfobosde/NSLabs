@@ -13,5 +13,6 @@ namespace HarvestMainFrame.Interfaces
 	{
 		// Событие закрытия формы.
 		event MainFormClosing MainFormClose;
+		(int windowHeight, int windowWight) GetWindowSize();
 	}
 }

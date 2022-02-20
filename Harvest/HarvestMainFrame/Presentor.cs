@@ -23,6 +23,10 @@ namespace HarvestMainFrame
 		// Проверка на возможность генерации.
 		bool isAbleToGenerateModels;
 
+		// Размеры окна.
+		int windowHeight;
+		int windowWight;
+
 		public Presentor(IMainForm mainForm, IApplesModels applesModels)
 		{
 			// Соединяем ссылки на объекты.
@@ -31,6 +35,9 @@ namespace HarvestMainFrame
 
 			// Подписываемся на событие закрытия обработчиком из презентора
 			_mainForm.MainFormClose += MainFormClose;
+
+			// Получим размеры окна.
+			(windowHeight, windowWight) = _mainForm.GetWindowSize();
 
 			// Задержка между созданиями двух яблок - 2 секунды.
 			appleGenratingPauseTime = 2000;
@@ -43,12 +50,14 @@ namespace HarvestMainFrame
 			appleGeneratingThread.Start();
 		}
 
+		// Остановить потоки при закрытии формы.
 		public void MainFormClose()
 		{
-			// Остановить потоки при закрытии формы.
-
 			// Останавливаем поток генерации моделей.
 			isAbleToGenerateModels = false;
+
+			// Останавливаем модели.
+			_applesModels.StopFallingToAll();
 		}
 
 		public void StartGenerateAppleModels()
@@ -57,7 +66,11 @@ namespace HarvestMainFrame
 			{
 				// Создаем новое яблоко.
 				_applesModels.AddNewApple(new AppleModel(
-					400, 50, 20, 20));
+					400, 
+					50, 
+					20, 
+					20,
+					windowHeight));
 
 				Thread.Sleep(appleGenratingPauseTime);
 			}
