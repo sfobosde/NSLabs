@@ -9,5 +9,13 @@ namespace HarvestMainFrame
 {
 	class ApplesModels: IApplesModels
 	{
+		// Список (массив) из объектов - яблок.
+		List<AppleModel> appleModels = new List<AppleModel>();
+
+		public void AddNewApple(AppleModel appleModel)
+		{
+			// Включаем яблоко в список.
+			appleModels.Add(appleModel);
+		}
 	}
 }

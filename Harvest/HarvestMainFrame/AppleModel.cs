@@ -8,11 +8,13 @@ namespace HarvestMainFrame
 {
 	class AppleModel
 	{
+		// Координаты начала падения яблок, радиус, скорость падения.
 		int _xAxesCoordinate;
 		int _yAxesCoordinate;
 		int _appleRadius;
 		int _fallingSpeed;
 
+		// Передаем в конструктор данные о яблоке.
 		public AppleModel(
 			int xAxesCoordinate,
 			int yAxesCoordinate,

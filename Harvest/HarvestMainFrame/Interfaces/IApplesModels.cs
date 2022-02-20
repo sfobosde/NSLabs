@@ -8,5 +8,7 @@ namespace HarvestMainFrame.Interfaces
 {
 	interface IApplesModels
 	{
+		// Добавление нового яблока
+		void AddNewApple(AppleModel appleModel);
 	}
 }
