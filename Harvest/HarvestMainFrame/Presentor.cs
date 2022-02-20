@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HarvestMainFrame.Interfaces;
+using System.Threading;
 
 namespace HarvestMainFrame
 {
@@ -13,6 +14,15 @@ namespace HarvestMainFrame
 		IMainForm _mainForm;
 		IApplesModels _applesModels;
 
+		// Поток, функция которого будет генерировать яблоки.
+		Thread appleGeneratingThread;
+
+		// Время задержки между созданиями двух яблок.
+		int appleGenratingPauseTime;
+
+		// Проверка на возможность генерации.
+		bool isAbleToGenerateModels;
+
 		public Presentor(IMainForm mainForm, IApplesModels applesModels)
 		{
 			// Соединяем ссылки на объекты.
@@ -21,11 +31,36 @@ namespace HarvestMainFrame
 
 			// Подписываемся на событие закрытия обработчиком из презентора
 			_mainForm.MainFormClose += MainFormClose;
+
+			// Задержка между созданиями двух яблок - 2 секунды.
+			appleGenratingPauseTime = 2000;
+
+			// Разрешаем генерацию моделей.
+			isAbleToGenerateModels = true;
+
+			// Начинаем создание яблок через поток.
+			appleGeneratingThread = new Thread(new ThreadStart(StartGenerateAppleModels));
+			appleGeneratingThread.Start();
 		}
 
 		public void MainFormClose()
 		{
 			// Остановить потоки при закрытии формы.
+
+			// Останавливаем поток генерации моделей.
+			isAbleToGenerateModels = false;
+		}
+
+		public void StartGenerateAppleModels()
+		{
+			while(isAbleToGenerateModels)
+			{
+				// Создаем новое яблоко.
+				_applesModels.AddNewApple(new AppleModel(
+					400, 50, 20, 20));
+
+				Thread.Sleep(appleGenratingPauseTime);
+			}
 		}
 	}
 }
