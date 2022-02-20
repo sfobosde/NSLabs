@@ -10,11 +10,19 @@ namespace HarvestMainFrame
 	class Presentor
 	{
 		// Создаем внутренний объект интерфейса формы, чтобы можно было ей управлять из презентора.
-		IMainForm mainForm;
+		IMainForm _mainForm;
 
 		public Presentor(IMainForm mainForm)
 		{
-			this.mainForm = mainForm;
+			_mainForm = mainForm;
+
+			// Подписываемся на событие закрытия обработчиком из презентора
+			_mainForm.MainFormClose += MainFormClose;
+		}
+
+		public void MainFormClose()
+		{
+			// Остановить потоки при закрытии формы.
 		}
 	}
 }

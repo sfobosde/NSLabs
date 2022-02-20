@@ -13,6 +13,9 @@ namespace HarvestMainFrame
 {
 	public partial class MainForm : Form, IMainForm
 	{
+		// Событие из интерфейса на закрытие формы.
+		public event MainFormClosing MainFormClose;
+
 		public MainForm()
 		{
 			InitializeComponent();
